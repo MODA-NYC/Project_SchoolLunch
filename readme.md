@@ -9,7 +9,7 @@ current: true
 image: /img/plot.png
 image_accessibility: final groupings
 open_datasets:
-github_repo: https://github.com/moda-nyc/Project_SchoolLunch.html
+github_repo: https://github.com/moda-nyc/Project_SchoolLunch.git
 ---
 
 # Project: Free Lunch For All!
