@@ -2,20 +2,20 @@
 permalink: ????
 layout: project
 title: Free Lunch For All!
-lead: We partnered with DOE to find a method to optimize the universal school lunch program, where all students are entitled to free breakfasts and lunches.
+lead: MODA partnered with DOE to find a method to optimize the universal school lunch program, where all students are entitled to free breakfasts and lunches.
 
 excerpt: ????
 current: true
 image: /img/plot.png
 image_accessibility: final groupings
 open_datasets:
-github_repo: https://github.com/moda-nyc/doe_MealReimbursements.html
+github_repo: https://github.com/moda-nyc/Project_SchoolLunch.html
 ---
 
 # Project: Free Lunch For All!
 Agency Partner: Department of Education
 
-We partnered with DOE to find a method to optimize the universal school lunch program, where all students are entitled to free breakfasts and lunches.
+MODA partnered with DOE to find a method to optimize the universal school lunch program, where all students are entitled to free breakfasts and lunches.
 
 ## Background and Scope
 
