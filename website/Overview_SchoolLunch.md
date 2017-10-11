@@ -13,7 +13,7 @@ github_repo: https://github.com/moda-nyc/Project_SchoolLunch.git
 ---
 
 
-We partnered with the Department of Education to find a method to optimize the universal school lunch program, where all students are entitled to free breakfasts and lunches.
+MODA partnered with the Department of Education to find a method to optimize the universal school lunch program, where all students are entitled to free breakfasts and lunches.
 
 {% contentfor scoping %}
 
