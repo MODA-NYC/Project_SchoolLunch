@@ -20,42 +20,6 @@ MODA worked with the Office of School Support Services at the DOE to develop a M
 
 Through a series of conversations with the Office of School Services at DOE, MODA learned that the amount of federal reimbursement for CEP depends on the percentage of identified students who are categorically eligible for free meals. This percentage is based on the number of students participating in other government program such as Supplemental Nutrition Assistance Program (SNAP) and Temporary Assistance for Needy Families (TANF). Schools can be enrolled in the program individually, or in groups. How to group a set of schools has no geographic or other constraints -- this decision is entirely up to the school district. The amount of reimbursement changes depending on these groupings. The analytics question was how to find the optimal school groupings to maximize reimbursement.
 
-**Reimbursement Rules**
-Schools are reimbursed at either the "free" or "paid" rate for each meal. The fraction of meals which are reimbursed at the "free" rate, the higher of the two, is determined by the makeup of the group the school is enrolled under. This fraction we call the $threshold$. The rest of the meals get reimbursed at the "paid" rate.
-
-At a minimum, the paid rate, $r_{lunch/breakfast,paid}$, for all meals is subsidized. This includes total number of breakfasts for all schools $\sum_{s}B_s$, and total number of lunches for all schools $\sum_{s}L_s$. That means the base reimbursement, $R_{base}$, is independent of the groupings: 
-
-$\begin{align}
-R_{base} = r_{lunch,paid} \sum_{s}L_s + r_{breakfast,paid} \sum_{s}B_s
-\end{align}$
-
-So then total Reimbursement, $R$, is
-
-$\begin{align}
-R = \sum_{s} threshold_s (\Delta r_{lunch} L_s  + \Delta r_{breakfast} B_s) + R_{base}
-\end{align}$
-
-> where 
-> $\begin{align}
-&\Delta r_{breakfast} = r_{breakfast,free} - r_{breakfast,paid} \\
-&\Delta r_{lunch} = r_{lunch,free} - r_{lunch,paid}
-\end{align}$
-
-> and the $threshold_s$ for each school, $s$, is determined it's group, $g$. It is the fraction of "identified students" $I_s$ for all schools in the group $g$ to the total number of "enrolled students" $N_s$ for all schools in the group, multiplied by a constant. This constant is set by the USDA at 1.6 but may change in subsequent years. $I_s$ and $N_s$ are based on enrollment in the previous school year. "Identified students" are those deemed categorically eligible for free meals, primarily due to receiving some sort of public assistance benefit.
-
-> $\begin{align}
-threshold_s =Min(1, \frac{ \sum_{s\in g} I_s} {\sum_{s\in g} N_s } * 1.6 )
-\end{align}$
-
-Before the school year begins, the groups are set and reported to the state. How schools should be grouped together is not prescribed. 
-
-Reimbursements to school districts happen on a monthly basis after the school year begins and are determined by the actual number of breakfasts and lunches eaten by the students. The groupings, however, must be submitted before the reimbursement, and so they can only be based on projected meal counts.
-
-**Grouping Rules**
-* All groups have to meet the minimum threshold: $threshold_{min} = 40\% * 1.6 = 64\%$
-* There can be at most 10 groups (this is not a hard rule, but an administrative limitation)
-* All schools must be part of the program
-
 {% endcontentfor %}
 
 ------------
