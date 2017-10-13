@@ -47,7 +47,11 @@ We tried a number of approaches and found Monte Carlo to be the most elegant to 
 
 We implemented these approaches in Python, using Pandas vectorized methods to reduce runtime. In addition we used the multiprocessing package to do runs in parallel and choose the best of the lot.
 
-The details of our approach and analysis can be found [here](https://github.com/MODA-NYC/Project_SchoolLunch/blob/master/FreeLunch-MonteCarlo.ipynb), in our github repo.
+The details of our approach and analysis can be found here:
+
+<div class="cell large-8" id="page-content">
+<iframe src="https://nbviewer.jupyter.org/github/MODA-NYC/Project_SchoolLunch/blob/master/FreeLunch-MonteCarlo.ipynb" width="100%" height="800" scrolling="yes"></iframe>
+</div>
 
 {% endcontentfor %}
 
