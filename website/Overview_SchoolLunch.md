@@ -1,28 +1,27 @@
 ---
-permalink: ????
+permalink: /projects/free_lunch_for_all/
 layout: project
 title: Free Lunch For All!
-lead: MODA partnered with DOE to find a method to optimize the universal school lunch program, where all students are entitled to free breakfasts and lunches.
-
-excerpt: ????
+lead: One in every 67 Americans under the age of 18 is a public school student in New York City. MODA partnered with the Department of Education to help its Office of School Support Services deliver free lunch to them all.
+excerpt:
 current: true
 image: /img/plot.png
-image_accessibility: final groupings
+image_accessibility: school groupings
 open_datasets:
 github_repo: https://github.com/moda-nyc/Project_SchoolLunch.git
 ---
 **Providing free universal lunch to all students**
-The federal government offers meal subsidies to schools participating in the National School Lunch Program, run by the USDA. Traditionally this worked by giving a subsidy per meal based on the income level of the individual student's family. Because this leads to stigmatization of students from low income families, there has been a move towards more inclusive programs providing universal lunch to all students regardless of their family's income level. The Community Eligibility Provision (CEP) was created by the federal government in 2010. Under this program schools receive subsidies based on the overall makeup of the school (or group of schools). Participating schools are required to provide breakfast and lunch at no charge to all students. More information on NYC's initial involvement in CEP is available in a [Fiscal Brief](http://www.ibo.nyc.ny.us/iboreports/if-no-student-pays-cost-to-provide-free-lunch-for-all-of-new-york-citys-elementary-school-students.html) by the NYC Independent Budget Office.
+The National School Lunch Program, administered by the United States Department of Agriculture, subsidizes free or discounted lunch programs for children from low-income families in participating school districts. The New York City Department of Education is one of those districts. Traditionally, schools were reimbursed based on the number of meals served to eligible students. This caused concern, however, that this led to stigmatization of students based on the level of their family's income. As a result, advocates and officials have pushed for universal programs that provide free lunch to all students, regardless of income. 
+In 2010, the Community Eligibility Provision (CEP) added to the National School Lunch Program to allow schools to receive an omnibus reimbursement based on the income demographics of their students, rather than a reimbursement for individual number of meals. Participating schools are required to provide breakfast and lunch at no charge to all students. After [a pilot](http://www.ibo.nyc.ny.us/iboreports/if-no-student-pays-cost-to-provide-free-lunch-for-all-of-new-york-citys-elementary-school-students.html) in the 2014-2015 school year, New York City announced its [full participation in the program](https://www.nytimes.com/2017/09/06/nyregion/free-lunch-new-york-city-schools.html) in September 2017.
 
-We partnered with the Department of Education to find a method to optimize the universal school lunch program, where all students are entitled to free breakfasts and lunches.
+MODA worked with the Office of School Support Services at the DOE to develop a Monte-Carlo method optimization algorithm to maximize the reimbursement it received from the federal government.  The project also demonstrates how using open source software, such as Python, turned an intractable problem into one solvable on a single laptop.
 
 {% contentfor scoping %}
 
-The amount of federal reimbursement for CEP depends on the percentage of identified students or students categorically eligible for free meals. This percentage is based on the student’s participation in other government program such as SNAP and TANF. Schools can be enrolled as groups and there are no geographic or other constraints on how to group the schools. The subsidy parameters, and hence the reimbursement amount, change based on how the schools are grouped. The analytics question is how to find the optimal school groupings to maximize reimbursement.
+Through a series of conversations with the Office of School Services at DOE, MODA learned that the amount of federal reimbursement for CEP depends on the percentage of identified students who are categorically eligible for free meals. This percentage is based on the number of students participating in other government program such as Supplemental Nutrition Assistance Program (SNAP) and Temporary Assistance for Needy Families (TANF). Schools can be enrolled in the program individually, or in groups. How to group a set of schools has no geographic or other constraints -- this decision is entirely up to the school district. The amount of reimbursement changes depending on these groupings. The analytics question was how to find the optimal school groupings to maximize reimbursement.
 
 **Reimbursement Rules**
-
-Schools are reimbursed at either the "free" rate or the "paid" rate for each meal. (Traditionally there is also a "reduced" rate, but that does not apply here). The fraction of meals which are reimbursed at the "free" (this is the higher of the two rates) is determined by the group the school is enrolled under. This fraction we will call the $threshold$. The rest of the meals get reimbursed at the "paid" rate.
+Schools are reimbursed at either the "free" or "paid" rate for each meal. The fraction of meals which are reimbursed at the "free" rate, the higher of the two, is determined by the makeup of the group the school is enrolled under. This fraction we call the $threshold$. The rest of the meals get reimbursed at the "paid" rate.
 
 At a minimum, the paid rate, $r_{lunch/breakfast,paid}$, for all meals is subsidized. This includes total number of breakfasts for all schools $\sum_{s}B_s$, and total number of lunches for all schools $\sum_{s}L_s$. That means the base reimbursement, $R_{base}$, is independent of the groupings: 
 
@@ -50,12 +49,11 @@ threshold_s =Min(1, \frac{ \sum_{s\in g} I_s} {\sum_{s\in g} N_s } * 1.6 )
 
 Before the school year begins, the groups are set and reported to the state. How schools should be grouped together is not prescribed. 
 
-Reimbursements happen on a monthly basis after the school year begins and are determined the actual number of breakfasts and lunches eaten by the students. The groupings however, can only be based on projected meal counts.
-
+Reimbursements to school districts happen on a monthly basis after the school year begins and are determined by the actual number of breakfasts and lunches eaten by the students. The groupings, however, must be submitted before the reimbursement, and so they can only be based on projected meal counts.
 
 **Grouping Rules**
 * All groups have to meet the minimum threshold: $threshold_{min} = 40\% * 1.6 = 64\%$
-* There can be at most 9(?) groups
+* There can be at most 10 groups (this is not a hard rule, but an administrative limitation)
 * All schools must be part of the program
 
 {% endcontentfor %}
@@ -77,7 +75,7 @@ The projected number of meals is based on meals served in previous years. Becaus
 
 {% contentfor analysis %}
 
-This is a combinatorial optimization problem, similar to some very well-known problems such as the traveling salesman and the knapsack problems. The challenge is finding an optimal solution among a descrete set of objects.
+This is a combinatorial optimization problem, similar to some very well-known problems such as the traveling salesman and the knapsack problems. The challenge is finding an optimal solution among a discrete set of objects.
 
 This problem is straightforward to solve for a handful of schools. The reimbursement can be calculated for each possible grouping and the highest grouping would be chosen. But as the number of schools grows this type of exhaustive or brute force approach quickly becomes impossible. With over 1000 schools an exact result is well out of reach, but we were able to find an approximate solution. 
 
